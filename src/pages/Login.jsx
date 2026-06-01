@@ -50,7 +50,7 @@ export default function Login() {
           </div>
           <div className="form-group">
             <label className="form-label">Password</label>
-            <input className="form-control" type="password" required minLength={6}
+            <input className="form-control" type="password" required minLength={5}
               value={form.password} onChange={set('password')} />
           </div>
           <button className="btn btn-primary btn-full" disabled={busy}>
