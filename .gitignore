@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+
+# Env / secrets
+.env
+.env.local
+.env.*.local
+
+# Editor / OS
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+*.log
+
+# Supabase local
+supabase/.temp/
+supabase/.branches/
+
+# Legacy PHP runtime artifacts (kept as reference, not deployed)
+uploads/

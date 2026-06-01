@@ -1,0 +1,9 @@
+# Supabase project config. `project_id` is set when you run `supabase link`.
+project_id = "joesfit"
+
+[functions.checkout]
+# Public function — the storefront calls it for guest + logged-in checkout.
+verify_jwt = false
+
+[functions.coupon]
+verify_jwt = false
