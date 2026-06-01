@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { supabase } from '../lib/supabase.js'
 import { useCart } from '../context/CartContext.jsx'
-import { useAuth } from '../context/AuthContext.jsx'
 import { useToast } from '../context/ToastContext.jsx'
 import { formatPrice } from '../lib/format.js'
 
@@ -20,7 +19,6 @@ const PAYMENTS = [
 
 export default function Checkout() {
   const { items, subtotal, clear } = useCart()
-  const { user } = useAuth()
   const { toast } = useToast()
 
   const [form, setForm] = useState({
@@ -33,19 +31,6 @@ export default function Checkout() {
   const [appliedCode, setAppliedCode] = useState('')
   const [submitting, setSubmitting] = useState(false)
   const [result, setResult] = useState(null)
-
-  useEffect(() => {
-    if (!user) return
-    supabase.from('customers').select('*').eq('id', user.id).maybeSingle()
-      .then(({ data }) => {
-        if (data) setForm((f) => ({
-          ...f,
-          name: data.name || '', email: data.email || user.email || '',
-          phone: data.phone || '', address: data.address || '',
-          city: data.city || '', province: data.province || '', zip: data.zip || '',
-        }))
-      })
-  }, [user])
 
   const set = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }))
   const shippingFee = DELIVERY[delivery].fee

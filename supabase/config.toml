@@ -7,3 +7,7 @@ verify_jwt = false
 
 [functions.coupon]
 verify_jwt = false
+
+[functions.create-staff]
+# Does its own admin/bootstrap auth check internally.
+verify_jwt = false

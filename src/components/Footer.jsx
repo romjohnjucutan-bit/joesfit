@@ -45,7 +45,9 @@ export default function Footer() {
       </div>
       <div className="footer-bottom">
         <span>© {new Date().getFullYear()} Joe's Fit. All rights reserved.</span>
-        <span>Made in the Philippines 🇵🇭</span>
+        <span>
+          Made in the Philippines 🇵🇭 · <Link to="/admin">Staff Login</Link>
+        </span>
       </div>
     </footer>
   )

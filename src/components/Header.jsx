@@ -1,12 +1,9 @@
 import { useEffect, useState } from 'react'
-import { Link, NavLink, useNavigate } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { useCart } from '../context/CartContext.jsx'
-import { useAuth } from '../context/AuthContext.jsx'
 
 export default function Header() {
   const { count, setOpen } = useCart()
-  const { user } = useAuth()
-  const navigate = useNavigate()
   const [scrolled, setScrolled] = useState(false)
   const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'light')
 
@@ -35,13 +32,6 @@ export default function Header() {
           title="Toggle dark mode"
           onClick={() => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))}
         />
-        <button
-          className="nav-btn"
-          title={user ? 'Account' : 'Login'}
-          onClick={() => navigate(user ? '/account' : '/login')}
-        >
-          {user ? '👤' : '🔑'}
-        </button>
         <button className="nav-btn" title="Cart" onClick={() => setOpen(true)}>
           🛒
           {count > 0 && <span className="cart-badge">{count}</span>}
